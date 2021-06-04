@@ -2,22 +2,24 @@ import React, { useMemo } from 'react'
 import {ProductItem} from './ProductItem';
 
 interface SearchResultsProps{
+  totalPrice: number;
   results: Array<{
     id: number;
     price: number;
+    priceFormatted: string;
     title: string;
   }>
   onAddToWishlist: (id:number) => void;
 } 
 
 
-const SearchResults = ({results, onAddToWishlist}:SearchResultsProps) => {
+const SearchResults = ({results, onAddToWishlist ,totalPrice}:SearchResultsProps) => {
 
-  const totalPrice = useMemo(()=>{
-    return results.reduce((total,product)=>{
-      return total + product.price;
-    },0)
-  },[results]);
+  // const totalPrice = useMemo(()=>{
+  //   return results.reduce((total,product)=>{
+  //     return total + product.price;
+  //   },0)
+  // },[results]);
 
 
   return (
